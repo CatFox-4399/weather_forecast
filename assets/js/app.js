@@ -216,9 +216,10 @@ const App = {
             chip.addEventListener('click', () => {
                 const city = chip.getAttribute('data-city');
                 const country = chip.getAttribute('data-country');
+                const country_code = chip.getAttribute('data-country-code') || '';
                 const lat = parseFloat(chip.getAttribute('data-lat'));
                 const lon = parseFloat(chip.getAttribute('data-lon'));
-                this.fetchWeather({ city, country, lat, lon });
+                this.fetchWeather({ city, country, country_code, lat, lon });
             });
         });
 
@@ -330,11 +331,13 @@ const App = {
             item.className = 'suggestion-item';
             item.setAttribute('role', 'option');
 
-            const stateInfo = city.admin1 ? `${city.admin1}, ` : '';
+            const locCity = I18N.getCityName(city.name);
+            const locCountry = I18N.getCountryName(city.country_code, city.country);
+            const stateInfo = city.admin1 ? `${I18N.getStateName(city.admin1)}, ` : '';
             item.innerHTML = `
                 <div>
-                    <div class="suggestion-title">${city.name}</div>
-                    <div class="suggestion-sub">${stateInfo}${city.country}</div>
+                    <div class="suggestion-title">${locCity}</div>
+                    <div class="suggestion-sub">${stateInfo}${locCountry}</div>
                 </div>
                 ${city.country_code ? `<span class="suggestion-badge">${city.country_code}</span>` : ''}
             `;
@@ -434,12 +437,14 @@ const App = {
         const loc = data.location;
         const cur = data.current;
 
-        // City & Country
+        // City & Country (Localized)
         const cityNameEl = document.getElementById('cityName');
         const countryNameEl = document.getElementById('countryName');
-        if (cityNameEl) cityNameEl.textContent = loc.city;
+        const locCity = I18N.getCityName(loc.city);
+        const locCountry = I18N.getCountryName(loc.country_code, loc.country);
+        if (cityNameEl) cityNameEl.textContent = locCity;
         if (countryNameEl) {
-            countryNameEl.textContent = loc.country + (loc.country_code ? ` (${loc.country_code})` : '');
+            countryNameEl.textContent = locCountry + (loc.country_code ? ` (${loc.country_code})` : '');
         }
 
         // Live local date & time clock
@@ -671,10 +676,12 @@ const App = {
             list.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'country-card-item';
+                const locCountry = I18N.getCountryName(item.code, item.name);
+                const locCapital = item.capital ? I18N.getCityName(item.capital) : '';
                 card.innerHTML = `
                     <div class="country-item-info">
-                        <span class="country-item-name">${item.name}</span>
-                        <span class="country-item-capital">${item.capital}</span>
+                        <span class="country-item-name">${locCountry}</span>
+                        <span class="country-item-capital">${locCapital}</span>
                     </div>
                     <span class="country-item-code">${item.code}</span>
                 `;
@@ -770,8 +777,9 @@ const App = {
                     stateSelect.disabled = false;
                     stateSelect.innerHTML = `<option value="">-- ${I18N.t('selectStatePrompt')} --</option>`;
                     json.data.forEach(s => {
+                        const locState = I18N.getStateName(s.name);
                         const countStr = s.city_count > 0 ? ` (${s.city_count} cities)` : '';
-                        stateSelect.innerHTML += `<option value="${s.id}" data-name="${s.name}" data-lat="${s.latitude || ''}" data-lon="${s.longitude || ''}">${s.name}${countStr}</option>`;
+                        stateSelect.innerHTML += `<option value="${s.id}" data-name="${s.name}" data-lat="${s.latitude || ''}" data-lon="${s.longitude || ''}">${locState}${countStr}</option>`;
                     });
                 } else {
                     stateSelect.disabled = true;
@@ -814,7 +822,8 @@ const App = {
                     citySelect.disabled = false;
                     citySelect.innerHTML = `<option value="">-- ${I18N.t('selectCityPrompt')} --</option>`;
                     json.data.forEach(c => {
-                        citySelect.innerHTML += `<option value="${c.id}" data-name="${c.name}" data-lat="${c.latitude || ''}" data-lon="${c.longitude || ''}">${c.name}</option>`;
+                        const locCity = I18N.getCityName(c.name);
+                        citySelect.innerHTML += `<option value="${c.id}" data-name="${c.name}" data-lat="${c.latitude || ''}" data-lon="${c.longitude || ''}">${locCity}</option>`;
                     });
                 } else if (sLat !== null && sLon !== null) {
                     // Fallback to the state coordinates if no sub-cities in DB
@@ -876,8 +885,9 @@ const App = {
         let html = `<option value="">-- ${I18N.t('selectCountryPrompt')} --</option>`;
         countries.forEach(c => {
             const flag = c.emoji ? `${c.emoji} ` : '';
-            const capStr = c.capital ? ` (${c.capital})` : '';
-            html += `<option value="${c.code}" data-name="${c.name}" data-capital="${c.capital || ''}" data-lat="${c.latitude || ''}" data-lon="${c.longitude || ''}">${flag}${c.name}${capStr}</option>`;
+            const localizedCountry = I18N.getCountryName(c.code, c.name);
+            const localizedCapital = c.capital ? ` (${I18N.getCityName(c.capital)})` : '';
+            html += `<option value="${c.code}" data-name="${c.name}" data-capital="${c.capital || ''}" data-lat="${c.latitude || ''}" data-lon="${c.longitude || ''}">${flag}${localizedCountry}${localizedCapital}</option>`;
         });
         countrySelect.innerHTML = html;
         if (currentVal) countrySelect.value = currentVal;
@@ -1030,10 +1040,12 @@ const App = {
         this.state.favorites.forEach(item => {
             const el = document.createElement('div');
             el.className = 'drawer-item';
+            const locCity = I18N.getCityName(item.city);
+            const locCountry = I18N.getCountryName(item.country_code, item.country);
             el.innerHTML = `
                 <div class="drawer-item-clickable">
-                    <span class="drawer-item-name">${item.city}</span>
-                    <span class="drawer-item-sub">${item.country}</span>
+                    <span class="drawer-item-name">${locCity}</span>
+                    <span class="drawer-item-sub">${locCountry}</span>
                 </div>
                 <button type="button" class="drawer-item-action-btn" title="Remove">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1167,10 +1179,12 @@ const App = {
         this.state.history.forEach(item => {
             const el = document.createElement('div');
             el.className = 'drawer-item';
+            const locCity = I18N.getCityName(item.city);
+            const locCountry = I18N.getCountryName(item.country_code, item.country);
             el.innerHTML = `
                 <div class="drawer-item-clickable">
-                    <span class="drawer-item-name">${item.city}</span>
-                    <span class="drawer-item-sub">${item.country}</span>
+                    <span class="drawer-item-name">${locCity}</span>
+                    <span class="drawer-item-sub">${locCountry}</span>
                 </div>
             `;
 
@@ -1247,6 +1261,25 @@ const App = {
         setEl('titleCountryBrowser', 'countryTitle');
         setEl('subtitleCountryBrowser', 'countrySubtitle');
 
+        // Sky Atmosphere Modes
+        const skySelect = document.getElementById('skyModeSelect');
+        if (skySelect) {
+            Array.from(skySelect.options).forEach(opt => {
+                opt.textContent = I18N.getSkyModeName(opt.value);
+            });
+        }
+        const skyWrap = document.querySelector('.sky-selector-wrap');
+        if (skyWrap) {
+            skyWrap.setAttribute('title', I18N.t('skyViewTooltip') || 'Atmospheric Sky View');
+        }
+
+        // Quick City Chips
+        const quickChips = document.querySelectorAll('.quick-city-chip');
+        quickChips.forEach(chip => {
+            const rawCity = chip.getAttribute('data-city');
+            if (rawCity) chip.textContent = I18N.getCityName(rawCity);
+        });
+
         // Hierarchical Regional Explorer Translations
         setEl('textExplorerTitle', 'explorerTitle');
         setEl('textExplorerSubtitle', 'explorerSubtitle');
@@ -1259,20 +1292,59 @@ const App = {
         if (optCountry) optCountry.textContent = I18N.t('selectCountryPrompt');
 
         const stateSelect = document.getElementById('explorerStateSelect');
-        if (stateSelect && stateSelect.disabled) {
-            const optState = document.getElementById('optStatePlaceholder') || stateSelect.options[0];
-            if (optState) optState.textContent = I18N.t('selectStateFirst');
+        if (stateSelect) {
+            if (stateSelect.disabled) {
+                const optState = document.getElementById('optStatePlaceholder') || stateSelect.options[0];
+                if (optState) optState.textContent = I18N.t('selectStateFirst');
+            } else {
+                Array.from(stateSelect.options).forEach((opt, idx) => {
+                    if (idx === 0) {
+                        opt.textContent = `-- ${I18N.t('selectStatePrompt')} --`;
+                    } else if (opt.dataset.name) {
+                        const countMatch = opt.textContent.match(/\(\d+\s+.*?\)/);
+                        const countStr = countMatch ? ` ${countMatch[0]}` : '';
+                        opt.textContent = `${I18N.getStateName(opt.dataset.name)}${countStr}`;
+                    }
+                });
+            }
         }
 
         const citySelect = document.getElementById('explorerCitySelect');
-        if (citySelect && citySelect.disabled) {
-            const optCity = document.getElementById('optCityPlaceholder') || citySelect.options[0];
-            if (optCity) optCity.textContent = I18N.t('selectCityFirst');
+        if (citySelect) {
+            if (citySelect.disabled) {
+                const optCity = document.getElementById('optCityPlaceholder') || citySelect.options[0];
+                if (optCity) optCity.textContent = I18N.t('selectCityFirst');
+            } else {
+                Array.from(citySelect.options).forEach((opt, idx) => {
+                    if (idx === 0) {
+                        opt.textContent = `-- ${I18N.t('selectCityPrompt')} --`;
+                    } else if (opt.dataset.name) {
+                        opt.textContent = I18N.getCityName(opt.dataset.name);
+                    }
+                });
+            }
         }
 
         // Re-render Country Select Options if loaded
         if (this.state.explorerCountries && this.state.explorerCountries.length > 0) {
             this.renderExplorerCountryOptions(this.state.explorerCountries);
+        }
+
+        // Update Hero Weather Card if active
+        if (this.state.currentWeatherData && this.state.currentWeatherData.location) {
+            const loc = this.state.currentWeatherData.location;
+            const cur = this.state.currentWeatherData.current;
+            const cityNameEl = document.getElementById('cityName');
+            const countryNameEl = document.getElementById('countryName');
+            const conditionTextEl = document.getElementById('conditionText');
+            if (cityNameEl) cityNameEl.textContent = I18N.getCityName(loc.city);
+            if (countryNameEl) {
+                const locCountry = I18N.getCountryName(loc.country_code || loc.country, loc.country);
+                countryNameEl.textContent = locCountry + (loc.country_code ? ` (${loc.country_code})` : '');
+            }
+            if (conditionTextEl && cur?.weather_code !== undefined) {
+                conditionTextEl.textContent = I18N.getConditionText(cur.weather_code);
+            }
         }
 
         setEl('drawerFavTitle', 'favoritesBtn');

@@ -3,14 +3,14 @@
  * Enables offline capability, shell caching, and network-first weather synchronization.
  */
 
-const CACHE_NAME = 'skysoft-weather-v3.3.0';
+const CACHE_NAME = 'skysoft-weather-v3.5.0';
 const STATIC_ASSETS = [
     './index.php',
-    './assets/css/style.css?v=3.3',
-    './assets/js/i18n.js?v=3.3',
-    './assets/js/sky.js?v=3.3',
-    './assets/js/manual.js?v=3.3',
-    './assets/js/app.js?v=3.3',
+    './assets/css/style.css?v=3.5',
+    './assets/js/i18n.js?v=3.5',
+    './assets/js/sky.js?v=3.5',
+    './assets/js/manual.js?v=3.5',
+    './assets/js/app.js?v=3.5',
     './assets/icons/realistic_moon.png?v=3',
     './assets/icons/cloud_cumulus.png',
     './assets/icons/cloud_wispy.png',

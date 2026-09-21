@@ -19,7 +19,7 @@ require_once __DIR__ . '/includes/config.php';
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Weather Stylesheet -->
-    <link rel="stylesheet" href="assets/css/style.css?v=3.3">
+    <link rel="stylesheet" href="assets/css/style.css?v=3.5">
     
     <!-- PWA Web App Manifest & Mobile Meta -->
     <link rel="manifest" href="manifest.json">
@@ -172,12 +172,12 @@ require_once __DIR__ . '/includes/config.php';
             <!-- Quick Access Cities (Requested Examples) -->
             <div class="quick-cities">
                 <span id="quickCitiesLabel" class="quick-label">Popular:</span>
-                <button type="button" class="quick-city-chip" data-city="Kuala Lumpur" data-country="Malaysia" data-lat="3.139" data-lon="101.687">Kuala Lumpur</button>
-                <button type="button" class="quick-city-chip" data-city="Penang" data-country="Malaysia" data-lat="5.414" data-lon="100.329">Penang</button>
-                <button type="button" class="quick-city-chip" data-city="Singapore" data-country="Singapore" data-lat="1.352" data-lon="103.820">Singapore</button>
-                <button type="button" class="quick-city-chip" data-city="Tokyo" data-country="Japan" data-lat="35.6895" data-lon="139.6917">Tokyo</button>
-                <button type="button" class="quick-city-chip" data-city="London" data-country="United Kingdom" data-lat="51.5074" data-lon="-0.1278">London</button>
-                <button type="button" class="quick-city-chip" data-city="New York" data-country="United States" data-lat="40.7128" data-lon="-74.0060">New York</button>
+                <button type="button" class="quick-city-chip" data-city="Kuala Lumpur" data-country="Malaysia" data-country-code="MY" data-lat="3.139" data-lon="101.687">Kuala Lumpur</button>
+                <button type="button" class="quick-city-chip" data-city="Penang" data-country="Malaysia" data-country-code="MY" data-lat="5.414" data-lon="100.329">Penang</button>
+                <button type="button" class="quick-city-chip" data-city="Singapore" data-country="Singapore" data-country-code="SG" data-lat="1.352" data-lon="103.820">Singapore</button>
+                <button type="button" class="quick-city-chip" data-city="Tokyo" data-country="Japan" data-country-code="JP" data-lat="35.6895" data-lon="139.6917">Tokyo</button>
+                <button type="button" class="quick-city-chip" data-city="London" data-country="United Kingdom" data-country-code="GB" data-lat="51.5074" data-lon="-0.1278">London</button>
+                <button type="button" class="quick-city-chip" data-city="New York" data-country="United States" data-country-code="US" data-lat="40.7128" data-lon="-74.0060">New York</button>
             </div>
         </section>
 
@@ -504,9 +504,9 @@ require_once __DIR__ . '/includes/config.php';
     <?php include __DIR__ . '/includes/footer.php'; ?>
 
     <!-- Application JavaScript Modules -->
-    <script src="assets/js/i18n.js?v=3.3"></script>
-    <script src="assets/js/sky.js?v=3.3"></script>
-    <script src="assets/js/manual.js?v=3.3"></script>
-    <script src="assets/js/app.js?v=3.3"></script>
+    <script src="assets/js/i18n.js?v=3.5"></script>
+    <script src="assets/js/sky.js?v=3.5"></script>
+    <script src="assets/js/manual.js?v=3.5"></script>
+    <script src="assets/js/app.js?v=3.5"></script>
 </body>
 </html>
