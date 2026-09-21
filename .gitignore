@@ -1,0 +1,17 @@
+# Cache directory
+cache/*
+!cache/.gitkeep
+
+# Operating System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+
+includes/config.php
+includes/db.php
+
+sql/schema.sql
