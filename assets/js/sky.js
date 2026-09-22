@@ -469,8 +469,10 @@ const SkyAtmosphere = {
         }
 
         // Update body theme class to keep text and cards perfectly legible
+        const isSunriseTheme = phase === 'sunrise';
         const isNightTheme = phase === 'sunset' || phase === 'night' || !isDay || cond === 'thunderstorm' || cond === 'heavyRain';
-        document.body.classList.toggle('theme-night', isNightTheme);
+        document.body.classList.toggle('theme-sunrise', isSunriseTheme);
+        document.body.classList.toggle('theme-night', isNightTheme || isSunriseTheme);
     },
 
     /**

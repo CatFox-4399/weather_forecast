@@ -1259,7 +1259,7 @@ const App = {
         setEl('lblHumidity', 'humidity');
         setEl('lblWind', 'windSpeed');
         setEl('lblPressure', 'pressure');
-        setEl('lblSun', 'sunrise');
+        setEl('lblSun', 'sunTimes');
 
         setEl('titleHourlyForecast', 'hourlyTitle');
         setEl('titleDailyForecast', 'dailyTitle');

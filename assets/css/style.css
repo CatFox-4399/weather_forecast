@@ -62,6 +62,36 @@ body.theme-night {
     --brand-soft: rgba(2, 132, 199, 0.2);
 }
 
+/* Golden Dawn / Sunrise Theme: Warm dawn translucency & golden accents */
+body.theme-sunrise {
+    --surface-card: rgba(22, 26, 48, 0.75);
+    --surface-card-hover: rgba(34, 40, 72, 0.88);
+    --surface-border: rgba(251, 191, 36, 0.28);
+    --surface-border-subtle: rgba(245, 158, 11, 0.18);
+    --text-primary: #fffbeb;
+    --text-secondary: #fed7aa;
+    --text-muted: #cbd5e1;
+    --brand-soft: rgba(245, 158, 11, 0.25);
+    --brand-primary: #f59e0b;
+    --brand-primary-hover: #d97706;
+}
+
+body.theme-sunrise .brand-text h1 {
+    background: linear-gradient(135deg, #ffffff 0%, #fed7aa 55%, #f59e0b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+body.theme-sunrise .metric-card {
+    border: 1px solid rgba(251, 191, 36, 0.22);
+    box-shadow: 0 4px 16px -2px rgba(245, 158, 11, 0.08);
+}
+
+body.theme-sunrise .metric-card:hover {
+    border-color: rgba(251, 191, 36, 0.45);
+    box-shadow: 0 8px 24px -3px rgba(245, 158, 11, 0.2);
+}
+
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -1795,39 +1825,39 @@ body.theme-night .manual-step-card {
 
 /* --- Sunrise Gradients (Dawn & Golden Hour) --- */
 .sky-background.sky-sunrise {
-    background: linear-gradient(180deg, #1e3a8a 0%, #2563eb 22%, #ea580c 58%, #f59e0b 82%, #fffbeb 100%);
+    background: linear-gradient(180deg, #090e24 0%, #151d45 18%, #2d1e4e 36%, #6b2447 54%, #b43a2b 70%, #ea580c 84%, #f59e0b 94%, #fff7ed 100%);
 }
 
 .sky-background.sky-sunrise.sky-clear {
-    background: linear-gradient(180deg, #1d4ed8 0%, #3b82f6 24%, #f97316 58%, #fde047 84%, #fff7ed 100%);
+    background: linear-gradient(180deg, #080d22 0%, #131b42 16%, #291b48 34%, #601f46 52%, #ab3428 68%, #e05318 82%, #f59e0b 92%, #fef08a 97%, #fffbeb 100%);
 }
 
 .sky-background.sky-sunrise.sky-partlyCloudy {
-    background: linear-gradient(180deg, #1e3a8a 0%, #3b82f6 28%, #ea580c 62%, #fef08a 88%, #fed7aa 100%);
+    background: linear-gradient(180deg, #0a1028 0%, #18224c 18%, #36224f 38%, #6d2d48 58%, #b34626 74%, #d97706 88%, #fef08a 96%, #fed7aa 100%);
 }
 
 .sky-background.sky-sunrise.sky-cloudy {
-    background: linear-gradient(180deg, #334155 0%, #475569 30%, #9a3412 65%, #d97706 85%, #fed7aa 100%);
+    background: linear-gradient(180deg, #181d2f 0%, #293047 25%, #4a3449 50%, #7c3f35 72%, #b45309 88%, #fed7aa 100%);
 }
 
 .sky-background.sky-sunrise.sky-rain {
-    background: linear-gradient(180deg, #1e293b 0%, #334155 35%, #7c2d12 68%, #9a3412 88%, #b45309 100%);
+    background: linear-gradient(180deg, #0f1424 0%, #1e263d 30%, #3e2840 55%, #6d2e24 75%, #9a3412 90%, #b45309 100%);
 }
 
 .sky-background.sky-sunrise.sky-heavyRain {
-    background: linear-gradient(180deg, #0f172a 0%, #1e293b 35%, #431407 70%, #7c2d12 100%);
+    background: linear-gradient(180deg, #080c18 0%, #121829 32%, #26162a 60%, #4a1c18 80%, #7c2d12 100%);
 }
 
 .sky-background.sky-sunrise.sky-thunderstorm {
-    background: linear-gradient(180deg, #020206 0%, #171727 35%, #4a044e 65%, #701a75 100%);
+    background: linear-gradient(180deg, #020208 0%, #0d0e20 30%, #2e0d38 58%, #581232 80%, #781d42 100%);
 }
 
 .sky-background.sky-sunrise.sky-snow {
-    background: linear-gradient(180deg, #1d4ed8 0%, #60a5fa 35%, #fb923c 70%, #ffedd5 100%);
+    background: linear-gradient(180deg, #0c1228 0%, #1c2850 25%, #42264e 50%, #7e304e 72%, #ea580c 88%, #ffedd5 100%);
 }
 
 .sky-background.sky-sunrise.sky-fog {
-    background: linear-gradient(180deg, #334155 0%, #64748b 35%, #ca8a04 70%, #fef08a 100%);
+    background: linear-gradient(180deg, #182033 0%, #2d3852 30%, #5c4449 60%, #a16207 82%, #fef08a 100%);
 }
 
 /* --- Sunset Gradients (Twilight & Golden Hour Dusk) --- */
@@ -1915,8 +1945,8 @@ body.theme-night .manual-step-card {
 }
 
 .sky-background.sky-sunrise .sky-horizon-glow {
-    opacity: 0.92;
-    background: radial-gradient(ellipse 130% 70% at 50% 100%, rgba(254, 240, 138, 0.45) 0%, rgba(249, 115, 22, 0.28) 38%, rgba(234, 88, 12, 0.09) 70%, transparent 100%);
+    opacity: 0.96;
+    background: radial-gradient(ellipse 130% 70% at 50% 100%, rgba(254, 240, 138, 0.58) 0%, rgba(249, 115, 22, 0.38) 36%, rgba(225, 29, 72, 0.16) 66%, transparent 100%);
     animation: horizonBreathe 7s ease-in-out infinite alternate;
 }
 
@@ -1967,7 +1997,7 @@ body.theme-night .manual-step-card {
 }
 
 .sky-celestial.celestial-sunrise {
-    top: 90px;
+    top: 140px;
     right: max(32px, calc(50% - 590px));
     width: 220px;
     height: 220px;
@@ -1988,9 +2018,14 @@ body.theme-night .manual-step-card {
         height: 130px;
         opacity: 0.9;
     }
-    .sky-celestial.celestial-sunrise,
+    .sky-celestial.celestial-sunrise {
+        top: 125px;
+        right: 15px;
+        width: 150px;
+        height: 150px;
+    }
     .sky-celestial.celestial-sunset {
-        top: 95px;
+        top: 105px;
         right: 15px;
         width: 150px;
         height: 150px;
