@@ -19,7 +19,7 @@ require_once __DIR__ . '/includes/config.php';
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Weather Stylesheet -->
-    <link rel="stylesheet" href="assets/css/style.css?v=3.5">
+    <link rel="stylesheet" href="assets/css/style.css?v=3.6">
     
     <!-- PWA Web App Manifest & Mobile Meta -->
     <link rel="manifest" href="manifest.json">
@@ -508,9 +508,9 @@ require_once __DIR__ . '/includes/config.php';
     <?php include __DIR__ . '/includes/footer.php'; ?>
 
     <!-- Application JavaScript Modules -->
-    <script src="assets/js/i18n.js?v=3.5"></script>
-    <script src="assets/js/sky.js?v=3.5"></script>
-    <script src="assets/js/manual.js?v=3.5"></script>
-    <script src="assets/js/app.js?v=3.5"></script>
+    <script src="assets/js/i18n.js?v=3.6"></script>
+    <script src="assets/js/sky.js?v=3.6"></script>
+    <script src="assets/js/manual.js?v=3.6"></script>
+    <script src="assets/js/app.js?v=3.6"></script>
 </body>
 </html>
