@@ -488,7 +488,12 @@ const App = {
         }
 
         // Atmospheric Theme Styling
-        this.updateAtmosphericTheme(cur.weather_code, cur.is_day, cur.wind_speed);
+        this.updateAtmosphericTheme(cur.weather_code, cur.is_day, cur.wind_speed, {
+            time: cur.time,
+            sunrise: cur.sunrise,
+            sunset: cur.sunset,
+            timezone: loc.timezone
+        });
     },
 
     /**
@@ -546,13 +551,13 @@ const App = {
     /**
      * Update background atmospheric theme dynamically based on weather & time
      */
-    updateAtmosphericTheme(weatherCode, isDay, windSpeed = 10) {
+    updateAtmosphericTheme(weatherCode, isDay, windSpeed = 10, sunTimes = null) {
         const body = document.body;
         body.classList.toggle('theme-night', isDay === 0);
 
-        // Update Dynamic Sky Atmosphere (Canvas, Sun/Moon, Clouds, Rain, Stars)
+        // Update Dynamic Sky Atmosphere (Canvas, Sun/Moon, Sunrise/Sunset, Clouds, Rain, Stars)
         if (window.SkyAtmosphere) {
-            window.SkyAtmosphere.setWeather(weatherCode, isDay, windSpeed);
+            window.SkyAtmosphere.setWeather(weatherCode, isDay, windSpeed, sunTimes);
         }
     },
 

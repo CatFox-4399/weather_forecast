@@ -37,6 +37,7 @@ require_once __DIR__ . '/includes/config.php';
 <body>
     <!-- Dynamic Atmospheric Sky Background -->
     <div id="skyBackground" class="sky-background sky-day sky-clear" aria-hidden="true">
+        <div id="skyHorizonGlow" class="sky-horizon-glow"></div>
         <div id="skyCelestial" class="sky-celestial celestial-day"></div>
         <div id="skyClouds" class="sky-clouds"></div>
         <canvas id="skyCanvas" class="sky-canvas"></canvas>
@@ -122,9 +123,12 @@ require_once __DIR__ . '/includes/config.php';
                     </div>
                     <select id="skyModeSelect" class="sky-mode-select" aria-label="Sky Atmosphere Mode">
                         <option value="auto">Sky: Live Weather</option>
+                        <option value="sunrise">Golden Sunrise / Dawn (Sun)</option>
                         <option value="clearDay">Sunny Day (Sun)</option>
+                        <option value="sunset">Dramatic Sunset / Dusk (Sun)</option>
                         <option value="clearNight">Starry Night (Moon & Stars)</option>
                         <option value="partlyCloudyDay">Partly Cloudy (Day)</option>
+                        <option value="partlyCloudySunset">Sunset with Clouds</option>
                         <option value="partlyCloudyNight">Partly Cloudy (Night)</option>
                         <option value="cloudyDay">Overcast Clouds (Day)</option>
                         <option value="cloudyNight">Overcast Clouds (Night)</option>

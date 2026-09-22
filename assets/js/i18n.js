@@ -128,9 +128,12 @@ const I18N = {
             // Sky Atmosphere Modes
             skyModes: {
                 auto: 'Sky: Live Weather',
+                sunrise: 'Golden Sunrise / Dawn (Sun)',
                 clearDay: 'Sunny Day (Sun)',
+                sunset: 'Dramatic Sunset / Dusk (Sun)',
                 clearNight: 'Starry Night (Moon & Stars)',
                 partlyCloudyDay: 'Partly Cloudy (Day)',
+                partlyCloudySunset: 'Sunset with Clouds',
                 partlyCloudyNight: 'Partly Cloudy (Night)',
                 cloudyDay: 'Overcast Clouds (Day)',
                 cloudyNight: 'Overcast Clouds (Night)',
@@ -266,9 +269,12 @@ const I18N = {
             // Sky Atmosphere Modes
             skyModes: {
                 auto: 'Langit: Cuaca Semasa',
+                sunrise: 'Terbit Matahari / Fajar Emas',
                 clearDay: 'Hari Cerah (Matahari)',
+                sunset: 'Matahari Terbenam / Senja Merah',
                 clearNight: 'Malam Berbintang (Bulan & Bintang)',
                 partlyCloudyDay: 'Sebahagian Mendung (Siang)',
+                partlyCloudySunset: 'Senja Bersama Awan',
                 partlyCloudyNight: 'Sebahagian Mendung (Malam)',
                 cloudyDay: 'Awan Mendung (Siang)',
                 cloudyNight: 'Awan Mendung (Malam)',
@@ -404,9 +410,12 @@ const I18N = {
             // Sky Atmosphere Modes
             skyModes: {
                 auto: '天空：实时天气',
+                sunrise: '日出晨曦 / 金色黎明',
                 clearDay: '晴天（艳阳）',
+                sunset: '壮丽晚霞 / 落日暮色',
                 clearNight: '晴朗夜晚（月亮与繁星）',
                 partlyCloudyDay: '局部多云（白天）',
+                partlyCloudySunset: '晚霞流云',
                 partlyCloudyNight: '局部多云（夜晚）',
                 cloudyDay: '多云阴天（白天）',
                 cloudyNight: '多云阴天（夜晚）',
@@ -542,9 +551,12 @@ const I18N = {
             // Sky Atmosphere Modes
             skyModes: {
                 auto: '空：リアルタイム天気',
+                sunrise: '日の出・朝焼け（黄金の夜明け）',
                 clearDay: '快晴（太陽）',
+                sunset: '夕焼け・黄昏（茜色の夕日）',
                 clearNight: '満天の星空（月と星）',
                 partlyCloudyDay: '所により曇り（昼）',
+                partlyCloudySunset: '夕焼け雲',
                 partlyCloudyNight: '所により曇り（夜）',
                 cloudyDay: '曇天・厚い雲（昼）',
                 cloudyNight: '曇天・厚い雲（夜）',
